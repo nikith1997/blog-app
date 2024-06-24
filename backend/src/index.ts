@@ -4,7 +4,6 @@ import mongoose from 'mongoose';
 import userRoutes from "./routes/UserRoutes"
 import postRoutes from "./routes/PostRoutes"
 import morgan from 'morgan'
-import verifyToken from './middlewares/verifyToken';
 
 dotenv.config()
 
@@ -19,7 +18,7 @@ mongoose.connect(process.env.MONGO_URI)
 .catch(err => console.log(err));
 
 app.use("/api/user", userRoutes)
-app.use("/api/post", verifyToken, postRoutes)
+app.use("/api/post", postRoutes)
 
 app.listen(port, () => {
   return console.log(`Express is listening at http://localhost:${port}`);

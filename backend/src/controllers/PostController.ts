@@ -2,6 +2,20 @@ import { Request, Response } from "express";
 import { validationResult } from "express-validator";
 import Post from "../models/Post";
 
+export const listPosts = async (_: Request, res: Response) => {
+    try {
+        const posts = await Post.find({})
+        res.status(200).json({
+            posts: posts
+        })
+    }
+    catch (error) {
+        res.status(500).json({
+            message: "Internal server error"
+        })
+    }
+}
+
 export const createPost = async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
