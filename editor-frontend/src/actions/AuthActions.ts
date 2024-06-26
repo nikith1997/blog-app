@@ -13,3 +13,7 @@ export const LoginFailure = (errorMessage: string) =><AuthActionType>({
     type: "LOGIN_FAILURE",
     errorMessage: errorMessage
   });
+
+export const LogOut = () =><AuthActionType> ({
+  type: "LOG_OUT"
+})

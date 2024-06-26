@@ -19,6 +19,11 @@ const AuthReducer = (state: AuthStateType, action: AuthActionType): AuthStateTyp
                 error: true,
                 errorMessage: action.errorMessage
             }
+        case "LOG_OUT":
+            return {
+                isFetching: false,
+                error: false
+            }
         default:
             return state
     }
