@@ -4,10 +4,12 @@ import mongoose from 'mongoose';
 import userRoutes from "./routes/UserRoutes"
 import postRoutes from "./routes/PostRoutes"
 import morgan from 'morgan'
+import cors from 'cors'
 
 dotenv.config()
 
 const app = express();
+app.use(cors())
 const port = process.env.SERVER_PORT || 3000;
 app.use(express.json())
 app.use(morgan('common'))

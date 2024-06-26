@@ -16,6 +16,20 @@ export const listPosts = async (_: Request, res: Response) => {
     }
 }
 
+export const listPostsForUser = async (req: Request, res: Response) => {
+    try {
+        const userPosts = await Post.find({userId: req.userId})
+        res.status(200).json({
+            posts: userPosts
+        })
+    }
+    catch (error) {
+        res.status(500).json({
+            message: "Internal server error"
+        })
+    }
+}
+
 export const createPost = async (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
